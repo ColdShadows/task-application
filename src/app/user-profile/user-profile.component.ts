@@ -5,11 +5,7 @@ import { AuthService } from '@auth0/auth0-angular';
 @Component({
   imports: [ CommonModule, AsyncPipe ],
   selector: 'app-user-profile',
-  template: `
-    <ul *ngIf="auth.user$ | async as user">
-      <li>{{ user.name }}</li>
-      <li>{{ user.email }}</li>
-    </ul>`,
+  templateUrl: './user-profile.component.html' ,
   standalone: true
 })
 export class UserProfileComponent {

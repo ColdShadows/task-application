@@ -19,17 +19,7 @@ import { DOCUMENT, CommonModule, AsyncPipe } from '@angular/common';
 @Component({
   imports : [ CommonModule, AsyncPipe],
   selector: 'app-auth-button',
-  template: `
-    <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-      <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
-        Log out
-      </button>
-    </ng-container>
-
-    <ng-template #loggedOut>
-      <button (click)="auth.loginWithRedirect()">Log in</button>
-    </ng-template>
-  `,
+  templateUrl: './auth-button.component.html',
   standalone: true
 })
 export class AuthButtonComponent {

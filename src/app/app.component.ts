@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthButtonComponent } from "./auth-button/auth-button.component";
-import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { WebsiteBannerComponent } from "./website-banner/website-banner.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthButtonComponent, UserProfileComponent],
+  imports: [RouterOutlet, WebsiteBannerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
