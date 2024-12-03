@@ -1,0 +1,7 @@
+<div class="container">
+    <div *ngFor="let userTask of userTasks">
+        <div class="row">
+            <app-task [userTask]="userTask" />
+        </div>
+    </div>
+</div>

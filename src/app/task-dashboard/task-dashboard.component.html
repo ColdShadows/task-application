@@ -1,1 +1,10 @@
-<p>task-dashboard works!</p>
+<div class="container">
+
+    <div class="row">
+        <button (click)="checkUserDetails()">Check User Details</button>
+        <button (click)="getUser()">Get User</button>
+        <button (click)="getToken()">Get Token</button>
+    </div>
+
+    <app-tasks-container *ngIf="userTasks" [userTasks]="userTasks"/>
+</div>

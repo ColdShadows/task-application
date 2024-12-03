@@ -1,0 +1,7 @@
+{
+    "domain": "dev-1ytqfri14i4zv6zm.us.auth0.com",
+    "clientId": "11flsUb6Xm93tHZOEhEoTCkxmLfYDFE6",
+    "apiUri": "https://localhost:44377/api",
+    "appUri": "http://localhost:4200",
+    "errorPath": "/error"
+  }
