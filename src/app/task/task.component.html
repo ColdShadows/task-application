@@ -1,13 +1,16 @@
-<mat-accordion>
+<mat-accordion *ngIf="!userTask.isDeleted">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{userTask.name}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-        <p>{{userTask.description}}</p>
-        <p>{{userTask.dueDate}}</p>
-        <p>{{userTask.percentageComplete}}</p>
-        <p>{{userTask.status}}</p>
+        <p>Description: {{userTask.description}}</p>
+        <p>Due Date: {{userTask.dueDate}}</p>
+        <p>Percentage Complete: {{userTask.percentageComplete * 100}} %</p>
+        <p>Status: {{userTask.status}}</p>
+
+        <app-delete-user-task [userTask]="userTask" />
+        <app-update-user-task [userTask]="userTask" (userTaskChange)="userTaskChange($event)"/>
     </mat-expansion-panel>
   </mat-accordion>

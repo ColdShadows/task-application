@@ -1,0 +1,37 @@
+<div class="modal-container">
+    <h2 class="modal-title">Create Task</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Name Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput name="name" [(ngModel)]="updatedUserTask.name" required />
+      </mat-form-field>
+  
+      <!-- Description Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput name="description" [(ngModel)]="updatedUserTask.description" />
+      </mat-form-field>
+
+      <!-- Percentage Complete Field -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Percentage Complete</mat-label>
+        <input matInput name="percentageComplete" type="number" max="100" min="0" [(ngModel)]="percentageComplete" (ngModelChange)="updatePercentageComplete()" />
+        <span matSuffix>%</span>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Due Date</mat-label>
+        <input matInput name="dueDate" [matDatepicker]="picker" [(ngModel)]="updatedUserTask.dueDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <!-- Action Buttons -->
+      <div class="modal-actions">
+        <button mat-button type="button" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Update</button>
+      </div>
+    </form>
+  </div>

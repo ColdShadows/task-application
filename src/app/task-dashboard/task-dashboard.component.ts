@@ -18,7 +18,6 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class TaskDashboardComponent {
   user?: User | null;
-  showCreateMenu: boolean = false;
   metadata = {};
   userTasks!: UserTask[];
   constructor(private userTasksService: UsertasksService, private authentication: AuthenticationService, private http: HttpClient, private dialog: MatDialog){}

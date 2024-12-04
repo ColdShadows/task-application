@@ -1,0 +1,10 @@
+<div class="modal-container">
+    <h2 class="modal-title">Delete Task</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <!-- Action Buttons -->
+      <div class="modal-actions">
+        <button mat-button type="button" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit" >Delete</button>
+      </div>
+    </form>
+  </div>

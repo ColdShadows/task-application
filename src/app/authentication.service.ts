@@ -11,7 +11,6 @@ export class AuthenticationService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   private userSubject = new BehaviorSubject<User | null>(null);
 
-  // Observable to subscribe to changes
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
   userData$: Observable<User | null> = this.userSubject.asObservable();
 
