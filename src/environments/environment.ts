@@ -21,8 +21,7 @@ export const environment = {
       clientId,
       authorizationParams: {
         redirect_uri: window.location.origin,
-        audience: 'https://dev-1ytqfri14i4zv6zm.us.auth0.com/api/v2/'
+        audience: 'TaskApplicationApi'
       },
-      errorPath,
     },
 };
