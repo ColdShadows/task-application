@@ -1,7 +1,7 @@
 export interface User {
-    id: string;
+    id?: string;
     usersubject: string;
-    firstName: string;
-    lastName: string;
-    preferencesId: string;
+    firstName: string | undefined;
+    lastName: string | undefined;
+    preferencesId?: string;
 }

@@ -1,63 +1,63 @@
 import { Component } from '@angular/core';
 import { UsertasksService } from '../usertasks.service';
-import { concatMap, map, Observable, tap } from 'rxjs';
 import { UserTask } from '../user-task.model';
 import { User } from '../user.model';
-import { UsersService } from '../users.service';
-import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { TasksContainerComponent } from '../tasks-container/tasks-container.component';
-import { environment } from '../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { CreateUserTaskModalComponent } from '../create-user-task-modal/create-user-task-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-task-dashboard',
   standalone: true,
-  imports: [TasksContainerComponent, CommonModule],
+  imports: [TasksContainerComponent, CommonModule, CreateUserTaskModalComponent],
   templateUrl: './task-dashboard.component.html',
   styleUrl: './task-dashboard.component.css'
 })
 export class TaskDashboardComponent {
-  user!: User;
+  user?: User | null;
+  showCreateMenu: boolean = false;
   metadata = {};
   userTasks!: UserTask[];
-  constructor(private userTasksService: UsertasksService, private usersService: UsersService, private auth: AuthService, private http: HttpClient){}
+  constructor(private userTasksService: UsertasksService, private authentication: AuthenticationService, private http: HttpClient, private dialog: MatDialog){}
 
   ngOnInit(): void {
-     this.userTasksService.getUserTasks().subscribe(c =>{
-      this.userTasks = c;
-     });
-  }
 
-  checkUserDetails() : void {
-
-    this.auth.user$
-    .pipe(
-      concatMap((user: any) =>
-        // Use HttpClient to make the call
-        this.http.get(
-          encodeURI(`https://dev-1ytqfri14i4zv6zm.us.auth0.com/api/v2/users/${user?.sub}`)
-        )
-      ),
-      map((user: any) => user.user_metadata),
-      tap((meta) => (this.metadata = meta))
-    )
-    .subscribe();
-  }
-
-  getUser() : void {
-    this.usersService.getUser().subscribe(x => {
-      this.user = x;
+    this.authentication.userData$.subscribe(e => {
+      this.user = e;
     });
+    
+    this.authentication.isLoggedIn$.subscribe(e =>{
+
+      if(e){
+        this.userTasksService.getUserTasks().subscribe(c =>{
+          this.userTasks = c;
+         });
+      }      
+    })   
   }
 
-  getToken() : void {
-    this.auth.getAccessTokenSilently().subscribe(e => 
-      {
-        console.log(e);
-      },f => 
-        {
-          console.log(f);
-        } );
+  openCreateModal(): void {
+    const dialogRef = this.dialog.open(CreateUserTaskModalComponent, {
+      width: '600px',
+      data: {}, // Optional data to pass to the modal
+      disableClose: true, // Prevents closing by clicking outside the modal
+      backdropClass: 'custom-backdrop', // Optional: Custom backdrop styles
+      position: {
+        top: '20%',
+        left: 'calc(50% - 300px)',
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Modal result:', result);
+        this.userTasksService.createUserTask({name: result.name, description: result.description, status: "New", percentageComplete: 0, dueDate: result.dueDate ? result.dueDate : null}).subscribe(e =>{
+          this.userTasks = this.userTasks.concat(e);
+        })
+      }
+    });
   }
 }

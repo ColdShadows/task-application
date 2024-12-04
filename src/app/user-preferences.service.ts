@@ -12,17 +12,14 @@ export class UserPreferencesService {
   constructor(private http: HttpClient) { }
 
   getUserPreferences() : Observable<UserPreferences[]> {
-    var stuff = this.http.get<UserPreferences[]>(environment.apiUri + "/userPreferences");
-    return stuff;
+    return this.http.get<UserPreferences[]>(environment.apiUri + "/userPreferences");
   }
 
   createUserPreferences(userPreferences : UserPreferences) : Observable<UserPreferences> {
-    var stuff = this.http.post<UserPreferences>(environment.apiUri + "/userPreferences", userPreferences);
-    return stuff;
+    return this.http.post<UserPreferences>(environment.apiUri + "/userPreferences", userPreferences);
   }
 
   updateUserPreferences(userTask : UserPreferences) : Observable<UserPreferences> {
-    var stuff = this.http.put<UserPreferences>(environment.apiUri + "/userPreferences/" + userTask.id, userTask);
-    return stuff;
+    return this.http.put<UserPreferences>(environment.apiUri + "/userPreferences/" + userTask.id, userTask);
   }
 }

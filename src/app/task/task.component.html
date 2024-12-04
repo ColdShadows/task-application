@@ -1,10 +1,13 @@
-<div class="container">
-    <div class="row">
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{userTask.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
         <p>{{userTask.description}}</p>
         <p>{{userTask.dueDate}}</p>
-    </div>
-    <div class="row">
         <p>{{userTask.percentageComplete}}</p>
         <p>{{userTask.status}}</p>
-    </div>
-</div>
+    </mat-expansion-panel>
+  </mat-accordion>

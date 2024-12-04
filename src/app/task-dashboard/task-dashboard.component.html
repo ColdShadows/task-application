@@ -1,9 +1,11 @@
 <div class="container">
 
     <div class="row">
-        <button (click)="checkUserDetails()">Check User Details</button>
-        <button (click)="getUser()">Get User</button>
-        <button (click)="getToken()">Get Token</button>
+        <div class="col-md-11"></div>
+        <div class="col-md-1">
+            <button class="btn btn-primary" (click)="openCreateModal()">Create Task</button>
+        </div>
+        
     </div>
 
     <app-tasks-container *ngIf="userTasks" [userTasks]="userTasks"/>

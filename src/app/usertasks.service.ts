@@ -12,23 +12,19 @@ export class UsertasksService {
   constructor(private http: HttpClient) { }
 
   getUserTasks() : Observable<UserTask[]> {
-    var stuff = this.http.get<UserTask[]>(environment.apiUri + "/userTasks");
-    return stuff;
+    return this.http.get<UserTask[]>(environment.apiUri + "/userTasks");
   }
 
   getUserTask(userTaskId : string) : Observable<UserTask> {
-    var stuff = this.http.get<UserTask>(environment.apiUri + "/userTasks/" + userTaskId);
-    return stuff;
+    return this.http.get<UserTask>(environment.apiUri + "/userTasks/" + userTaskId);
   }
 
   createUserTask(userTask : UserTask) : Observable<UserTask> {
-    var stuff = this.http.post<UserTask>(environment.apiUri + "/userTasks", userTask);
-    return stuff;
+    return this.http.post<UserTask>(environment.apiUri + "/userTasks", userTask);
   }
 
   updateUserTask(userTask : UserTask) : Observable<UserTask> {
-    var stuff = this.http.put<UserTask>(environment.apiUri + "/userTasks/" + userTask.id, userTask);
-    return stuff;
+    return this.http.put<UserTask>(environment.apiUri + "/userTasks/" + userTask.id, userTask);
   }
 
   deleteUserTask(userTaskId : string) : Observable<void> {

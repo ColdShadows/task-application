@@ -1,0 +1,31 @@
+<div class="modal-container">
+  <h2 class="modal-title">Create Task</h2>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
+    <!-- Name Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput name="name" ngModel required />
+    </mat-form-field>
+
+    <!-- Description Field -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Description</mat-label>
+      <!-- <textarea matInput name="description" ngModel></textarea> -->
+      <input matInput name="description" ngModel />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Due Date</mat-label>
+      <input matInput [matDatepicker]="picker" name="dueDate" ngModel>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- Action Buttons -->
+    <div class="modal-actions">
+      <button mat-button type="button" (click)="close()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Create</button>
+    </div>
+  </form>
+</div>
