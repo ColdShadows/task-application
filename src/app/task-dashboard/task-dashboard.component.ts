@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { UsertasksService } from '../usertasks.service';
 import { UserTask } from '../user-task.model';
 import { User } from '../user.model';
-import { HttpClient } from '@angular/common/http';
 import { TasksContainerComponent } from '../tasks-container/tasks-container.component';
 import { CommonModule } from '@angular/common';
 import { CreateUserTaskModalComponent } from '../create-user-task-modal/create-user-task-modal.component';
@@ -18,9 +17,8 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class TaskDashboardComponent {
   user?: User | null;
-  metadata = {};
   userTasks!: UserTask[];
-  constructor(private userTasksService: UsertasksService, private authentication: AuthenticationService, private http: HttpClient, private dialog: MatDialog){}
+  constructor(private userTasksService: UsertasksService, private authentication: AuthenticationService, private dialog: MatDialog){}
 
   ngOnInit(): void {
 

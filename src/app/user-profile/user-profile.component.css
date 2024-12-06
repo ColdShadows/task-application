@@ -1,0 +1,7 @@
+  .update-preferences:hover {
+    cursor: pointer;
+  }
+
+  .mat-expansion-panel-header-title {
+    font-weight: bold;
+  }

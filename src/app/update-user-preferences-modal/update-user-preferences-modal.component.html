@@ -1,0 +1,26 @@
+<div class="modal-container">
+  <h2 class="modal-title">Update User Preferences</h2>
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Theme</mat-label>
+      <mat-select [(value)]="userPreferences.themeName">
+        <mat-option *ngFor="let theme of themes" [value]="theme">
+          {{ theme }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Action Buttons -->
+    <div class="modal-actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>

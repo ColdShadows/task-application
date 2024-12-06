@@ -1,6 +1,5 @@
 export interface UserPreferences {
-    id: string;
-    userid: string;
-    preferencesJson: string;
-    preferencesVersion: number;
+    id?: string;
+    userid?: string;
+    themeName: string;
 }

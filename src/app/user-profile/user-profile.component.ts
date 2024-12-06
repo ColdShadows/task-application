@@ -1,13 +1,88 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { User } from '../user.model';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationService } from '../authentication.service';
+import { UpdateUserPreferencesModalComponent } from '../update-user-preferences-modal/update-user-preferences-modal.component';
+import { UserPreferences } from '../user-preferences.model';
+import { ThemeService } from '../themes.service';
+import { UserPreferencesService } from '../user-preferences.service';
+import { Theme } from '../theme.model';
 
 @Component({
-  imports: [ CommonModule, AsyncPipe ],
   selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html' ,
-  standalone: true
+  standalone: true,
+  imports: [CommonModule, UpdateUserPreferencesModalComponent, MatExpansionModule],
+  templateUrl: './user-profile.component.html',
+  styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
-  constructor(public auth: AuthService) {}
+  isOpen = false;
+  user?: User | null;
+  userPreferences?: UserPreferences | null;
+  themes!: Theme[];
+
+  constructor(private userPreferencesService: UserPreferencesService, private authentication: AuthenticationService, private themeService: ThemeService, private dialog: MatDialog){}
+
+  ngOnInit(): void {
+
+    this.themeService.getThemes();
+    // Load default theme on initialization
+    this.themeService.themes.subscribe(e => {
+      this.themes = e;
+      this.setTheme();
+    })
+
+    this.authentication.userData$.subscribe(e => {
+      this.user = e;
+    });
+    
+    this.authentication.isLoggedIn$.subscribe(e =>{
+      if(e){
+        this.userPreferencesService.getUserPreferences().subscribe(c =>{
+          this.userPreferences = c;
+          this.setTheme();
+         });
+      }      
+    })   
+  }
+
+  setTheme(){
+    if(this.userPreferences?.themeName){
+      this.themeService.loadTheme(this.userPreferences.themeName)
+    }
+    else{
+      this.themeService.loadTheme('default')
+    }
+  }
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
+
+  openUpdateUserPreferencesModal(): void {
+    const dialogRef = this.dialog.open(UpdateUserPreferencesModalComponent, {
+      width: '600px',
+      data: {
+        userPreferences: this.userPreferences,
+        themes: this.themes
+      },
+      disableClose: true,
+      backdropClass: 'custom-backdrop',
+      position: {
+        top: '20%',
+        left: 'calc(50% - 300px)',
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Modal result:', result);
+        this.userPreferencesService.updateUserPreferences(result).subscribe(e =>{
+          this.userPreferences = e;
+        })
+      }
+    });
+  }
 }

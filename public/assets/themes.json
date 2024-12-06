@@ -1,0 +1,81 @@
+{
+    "default": {
+      "primary": "#007bff",
+      "secondary": "#6c757d",
+      "background": "#ffffff",
+      "text": "#212529"
+    },
+    "forest": {
+      "primary": "#4CAF50",
+      "secondary": "#2E7D32",
+      "background": "#A5D6A7",
+      "text": "#1B5E20"
+    },
+    "neon": {
+      "primary": "#00FF00",
+      "secondary": "#FF00FF",
+      "background": "#000000",
+      "text": "#00FFFF"
+    },
+    "pink-bliss": {
+      "primary": "#FF66B2",
+      "secondary": "#FF3399",
+      "background": "#F2CCE2",
+      "text": "#6A1B9A"
+    },
+    "ocean-blue": {
+      "primary": "#0288D1",
+      "secondary": "#00BCD4",
+      "background": "#E1F5FE",
+      "text": "#01579B"
+    },
+    "sunset-glow": {
+      "primary": "#FF5722",
+      "secondary": "#FF9800",
+      "background": "#FFEBEE",
+      "text": "#D32F2F"
+    },
+    "lavender-dream": {
+      "primary": "#9C27B0",
+      "secondary": "#BA68C8",
+      "background": "#F3E5F5",
+      "text": "#4A148C"
+    },
+    "tropical-green": {
+      "primary": "#388E3C",
+      "secondary": "#81C784",
+      "background": "#E8F5E9",
+      "text": "#1B5E20"
+    },
+    "electric-neon": {
+      "primary": "#FF00FF",
+      "secondary": "#00FFFF",
+      "background": "#000000",
+      "text": "#FFFF00"
+    },
+    "autumn-harvest": {
+      "primary": "#FF7043",
+      "secondary": "#D32F2F",
+      "background": "#FFF3E0",
+      "text": "#3E2723"
+    },
+    "midnight-purple": {
+      "primary": "#673AB7",
+      "secondary": "#311B92",
+      "background": "#9C27B0",
+      "text": "#BB86FC"
+    },
+    "minty-fresh": {
+      "primary": "#00C853",
+      "secondary": "#A5D6A7",
+      "background": "#E8F5E9",
+      "text": "#1B5E20"
+    },
+    "peachy-glow": {
+      "primary": "#FF7043",
+      "secondary": "#FFAB91",
+      "background": "#FFEBEE",
+      "text": "#BF360C"
+    }
+  }
+  
