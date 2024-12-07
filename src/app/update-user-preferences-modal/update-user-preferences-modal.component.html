@@ -4,8 +4,23 @@
     <mat-form-field appearance="fill">
       <mat-label>Select Theme</mat-label>
       <mat-select [(value)]="userPreferences.themeName">
-        <mat-option *ngFor="let theme of themes" [value]="theme">
-          {{ theme }}
+        <mat-option *ngFor="let theme of themes" (click)="changeTheme(theme.name)" [value]="theme">
+
+          <!-- <div class="container">
+            <div class="row">
+              <span></span>
+            </div>
+
+          </div> -->
+
+          <p>{{ theme.name }}</p>
+
+          <div class="row">
+            <div class="box" [ngStyle]="{'background-color': theme.primary}"></div>
+            <div class="box" [ngStyle]="{'background-color': theme.secondary}"></div>
+            <div class="box" [ngStyle]="{'background-color': theme.background}"></div>
+            <div class="box" [ngStyle]="{'background-color': theme.text}"></div>
+          </div>
         </mat-option>
       </mat-select>
     </mat-form-field>

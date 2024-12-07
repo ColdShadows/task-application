@@ -79,9 +79,16 @@ export class UserProfileComponent {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Modal result:', result);
-        this.userPreferencesService.updateUserPreferences(result).subscribe(e =>{
-          this.userPreferences = e;
-        })
+        if(result.id){
+          this.userPreferencesService.updateUserPreferences(result).subscribe(e =>{
+            this.userPreferences = e;
+          })
+        }
+        else{
+          this.userPreferencesService.createUserPreferences(result).subscribe(e =>{
+            this.userPreferences = e;
+          })
+        }        
       }
     });
   }

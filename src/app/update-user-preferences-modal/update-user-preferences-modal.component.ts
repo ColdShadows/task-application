@@ -21,14 +21,18 @@ import { CommonModule } from '@angular/common';
 export class UpdateUserPreferencesModalComponent {
   userPreferences!: UserPreferences
   themes!: Theme[]
+  initialThemeName!: string;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private themeService: ThemeService,  public dialogRef: MatDialogRef<UpdateUserPreferencesModalComponent>) { }
 
   ngOnInit() {
     this.userPreferences = this.data.userPreferences == null ? { themeName: "default"} : this.data.userPreferences;
+    this.initialThemeName = this.userPreferences.themeName;
     this.themes = this.data.themes
   }
 
   cancel(): void {
+    this.userPreferences.themeName = this.initialThemeName;
+    this.themeService.loadTheme(this.initialThemeName);
     this.dialogRef.close();
   }
 
