@@ -5,3 +5,10 @@
   .mat-expansion-panel-header-title {
     font-weight: bold;
   }
+
+  .user-profile-container {
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: var(--secondary);
+  }

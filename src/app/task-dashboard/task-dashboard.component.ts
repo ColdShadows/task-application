@@ -13,8 +13,7 @@ import { AuthenticationService } from '../authentication.service';
   standalone: true,
   imports: [TasksContainerComponent, CommonModule, CreateUserTaskModalComponent],
   templateUrl: './task-dashboard.component.html',
-  styleUrl: './task-dashboard.component.css',
-  encapsulation: ViewEncapsulation.None
+  styleUrl: './task-dashboard.component.css'
 })
 export class TaskDashboardComponent {
   user?: User | null;
