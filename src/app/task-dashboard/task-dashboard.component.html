@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-2">
-            <button  (click)="openCreateModal()">Create Task</button>
+            <button *ngIf="user" (click)="openCreateModal()">Create Task</button>
         </div>
         
     </div>
