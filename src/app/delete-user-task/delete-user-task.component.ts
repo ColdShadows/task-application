@@ -26,11 +26,11 @@ export class DeleteUserTaskComponent {
         userTask: this.userTask
       }, // Optional data to pass to the modal
       disableClose: true, // Prevents closing by clicking outside the modal
-      backdropClass: 'custom-backdrop', // Optional: Custom backdrop styles
       position: {
         top: '20%',
         left: 'calc(50% - 300px)',
-      }
+      },
+      panelClass: 'modal-panel'
     });
 
     dialogRef.afterClosed().subscribe(result => {

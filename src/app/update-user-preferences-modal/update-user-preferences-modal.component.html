@@ -1,20 +1,12 @@
-<div class="modal-container">
-  <h2 class="modal-title">Update User Preferences</h2>
+<div class="text-center">
+  <h2 class="py-3">Update User Preferences</h2>
   <form #form="ngForm" (ngSubmit)="onSubmit()">
-    <mat-form-field appearance="fill">
-      <mat-label>Select Theme</mat-label>
-      <mat-select [(value)]="userPreferences.themeName">
-        <mat-option *ngFor="let theme of themes" (click)="changeTheme(theme.name)" [value]="theme">
-
-          <!-- <div class="container">
-            <div class="row">
-              <span></span>
-            </div>
-
-          </div> -->
-
-          <p>{{ theme.name }}</p>
-
+    <mat-form-field appearance="outline">
+      <mat-label class="pb-2">Select Theme</mat-label>
+      <mat-select name="currentTheme" [ngModel]="userPreferences.themeName" (ngModelChange)="changeTheme($event)">
+        <!-- (click)="changeTheme(theme.name)" -->
+        <mat-option *ngFor="let theme of themes" [value]="theme" class="pb-2">
+          <p class="bold">{{ theme.name }}</p>
           <div class="row">
             <div class="box" [ngStyle]="{'background-color': theme.primary}"></div>
             <div class="box" [ngStyle]="{'background-color': theme.secondary}"></div>
@@ -25,12 +17,11 @@
       </mat-select>
     </mat-form-field>
 
+    <p>{{userPreferences.themeName}}</p>  
     <!-- Action Buttons -->
     <div class="modal-actions">
       <button mat-button type="button" (click)="cancel()">Cancel</button>
       <button
-        mat-raised-button
-        color="primary"
         type="submit"
         [disabled]="!form.valid"
       >

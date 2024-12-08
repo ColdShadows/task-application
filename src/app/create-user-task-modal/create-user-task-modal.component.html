@@ -1,17 +1,17 @@
-<div class="modal-container">
-  <h2 class="modal-title">Create Task</h2>
+<div class="text-center">
+  <h2 class="py-5">Create Task</h2>
   <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
     <!-- Name Field -->
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field style="width: 90%;" appearance="outline">
       <mat-label>Name</mat-label>
-      <input matInput name="name" ngModel required />
+      <input class="pl-2" matInput name="name" ngModel required />
     </mat-form-field>
 
     <!-- Description Field -->
-    <mat-form-field appearance="outline" class="full-width">
+    <mat-form-field style="width: 90%;" appearance="outline">
       <mat-label>Description</mat-label>
       <!-- <textarea matInput name="description" ngModel></textarea> -->
-      <input matInput name="description" ngModel />
+      <textarea matInput style="word-break: break; word-wrap: wrap; height: 90px;" name="description" ngModel > </textarea>
     </mat-form-field>
 
     <mat-form-field>
@@ -25,7 +25,7 @@
     <!-- Action Buttons -->
     <div class="modal-actions">
       <button mat-button type="button" (click)="close()">Cancel</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">Create</button>
+      <button type="submit" [disabled]="!form.valid">Create</button>
     </div>
   </form>
 </div>

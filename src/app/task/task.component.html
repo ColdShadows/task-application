@@ -1,16 +1,27 @@
-<mat-accordion *ngIf="!userTask.isDeleted">
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{userTask.name}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-        <p>Description: {{userTask.description}}</p>
-        <p>Due Date: {{userTask.dueDate}}</p>
-        <p>Percentage Complete: {{userTask.percentageComplete * 100}} %</p>
-        <p>Status: {{userTask.status}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <mat-accordion *ngIf="!userTask.isDeleted">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title class="py-3">
+              <div class="task-header">
+                <span style="font-weight: bold;"> {{userTask.name}} </span>
+                <span><span>{{userTask.dueDate | date}}   </span> <span *ngIf="userTask.percentageComplete" style="font-weight: bold;">| {{userTask.percentageComplete * 100}}%</span></span>
+              </div>       
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+            <p style="text-wrap: wrap;">Description: {{userTask.description}}</p>
+            <p>Due Date: {{userTask.dueDate | date}}</p>
+            <p>Status: {{userTask.status}}</p>
 
-        <app-delete-user-task [userTask]="userTask" />
-        <app-update-user-task [userTask]="userTask" (userTaskChange)="userTaskChange($event)"/>
-    </mat-expansion-panel>
-  </mat-accordion>
+            <div class="task-button-container">
+              <app-delete-user-task [userTask]="userTask" />
+              <app-update-user-task [userTask]="userTask" (userTaskChange)="userTaskChange($event)"/>
+            </div>
+            
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>

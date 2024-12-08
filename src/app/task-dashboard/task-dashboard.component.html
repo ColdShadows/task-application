@@ -1,12 +1,10 @@
-<div class="container">
-
+<div class="container pt-20">
     <div class="row">
-        <div class="col-md-11"></div>
-        <div class="col-md-1">
-            <button class="btn btn-primary" (click)="openCreateModal()">Create Task</button>
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+            <button  (click)="openCreateModal()">Create Task</button>
         </div>
         
     </div>
-
     <app-tasks-container *ngIf="userTasks" [userTasks]="userTasks"/>
 </div>

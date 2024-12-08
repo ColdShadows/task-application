@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { User } from '../user.model';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { CommonModule } from '@angular/common';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AuthenticationService } from '../authentication.service';
 import { UpdateUserPreferencesModalComponent } from '../update-user-preferences-modal/update-user-preferences-modal.component';
 import { UserPreferences } from '../user-preferences.model';
@@ -13,9 +13,10 @@ import { Theme } from '../theme.model';
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule, UpdateUserPreferencesModalComponent, MatExpansionModule],
+  imports: [CommonModule, UpdateUserPreferencesModalComponent, MatExpansionModule, MatDialogModule],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  styleUrl: './user-profile.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent {
   isOpen = false;
@@ -69,11 +70,11 @@ export class UserProfileComponent {
         themes: this.themes
       },
       disableClose: true,
-      backdropClass: 'custom-backdrop',
       position: {
-        top: '20%',
         left: 'calc(50% - 300px)',
-      }
+      },
+      panelClass: 'modal-panel',
+      hasBackdrop: false,
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { UsertasksService } from '../usertasks.service';
 import { UserTask } from '../user-task.model';
 import { User } from '../user.model';
@@ -13,7 +13,8 @@ import { AuthenticationService } from '../authentication.service';
   standalone: true,
   imports: [TasksContainerComponent, CommonModule, CreateUserTaskModalComponent],
   templateUrl: './task-dashboard.component.html',
-  styleUrl: './task-dashboard.component.css'
+  styleUrl: './task-dashboard.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class TaskDashboardComponent {
   user?: User | null;
@@ -41,11 +42,11 @@ export class TaskDashboardComponent {
       width: '600px',
       data: {}, // Optional data to pass to the modal
       disableClose: true, // Prevents closing by clicking outside the modal
-      backdropClass: 'custom-backdrop', // Optional: Custom backdrop styles
       position: {
         top: '20%',
         left: 'calc(50% - 300px)',
-      }
+      },
+      panelClass: 'modal-panel',
     });
 
     dialogRef.afterClosed().subscribe(result => {

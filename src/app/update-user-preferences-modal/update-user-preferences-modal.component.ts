@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserPreferences } from '../user-preferences.model';
 import { Theme } from '../theme.model';
@@ -16,7 +16,8 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, MatDialogModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, CommonModule],
   templateUrl: './update-user-preferences-modal.component.html',
-  styleUrl: './update-user-preferences-modal.component.css'
+  styleUrl: './update-user-preferences-modal.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class UpdateUserPreferencesModalComponent {
   userPreferences!: UserPreferences
@@ -41,8 +42,8 @@ export class UpdateUserPreferencesModalComponent {
   }
 
   // Set the theme by adding the theme class to the body
-  changeTheme(themeName: string) {
-    this.themeService.loadTheme(themeName);
-    this.userPreferences.themeName = themeName;
+  changeTheme(event: any) {
+    this.themeService.loadTheme(event.name);
+    this.userPreferences.themeName = event.name;
   }
 }

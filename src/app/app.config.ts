@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { AuthInterceptor } from './auth-interceptor';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from "@angular/material/core";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideAuth0(environment.auth),
     provideHttpClient(withInterceptors([AuthInterceptor])),
     provideAnimations(),
-    importProvidersFrom(MatNativeDateModule)
+    importProvidersFrom(MatNativeDateModule), provideAnimationsAsync()
   ]
 };

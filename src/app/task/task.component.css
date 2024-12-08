@@ -1,3 +1,24 @@
 mat-expansion-panel {
     margin-bottom: 10px;
+    text-wrap: wrap !important;
+    word-wrap: break-word;
   }
+
+  mat-expansion-panel-header {
+    border-radius: 20px !important;
+    border-color: var(--secondary);
+    border-width: 4px;
+    border-style: solid;
+  }
+
+.task-header {
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+}
+
+.task-button-container {
+  display: flex;
+  justify-content: space-between; 
+  width: 100%;
+}
